@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUTS STUDENT</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#10233f;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:100px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    border-top:15px solid #303a4d;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.luts-logo{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+}
+
+.brand-title{
+    color:#06417d;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.brand-subtitle{
+    color:#607080;
+    font-size:11px;
+    letter-spacing:1px;
+    margin-top:4px;
+}
+
+.user-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.notification{
+    width:40px;
+    height:40px;
+    border:1px solid #ddd;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#3976b8;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.user-text strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-text span{
+    font-size:11px;
+    color:#657080;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.app{
+    display:flex;
+    min-height:calc(100vh - 100px);
+}
+
+.sidebar{
+    width:248px;
+    background:#0c3c72;
+    color:white;
+    padding:25px 15px;
+    flex-shrink:0;
+}
+
+.sidebar-title{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#9ebbd8;
+    margin:0 0 18px 5px;
+}
+
+.menu-button{
+    width:100%;
+    background:transparent;
+    border:none;
+    color:white;
+    text-align:left;
+    padding:15px 13px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.menu-button:hover,
+.menu-button.active{
+    background:#15518e;
+}
+
+.menu-icon{
+    display:inline-block;
+    width:28px;
+}
+
+.sidebar-bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    margin-top:330px;
+    padding-top:20px;
+}
+
+.content{
+    flex:1;
+    padding:28px 35px;
+    overflow-x:hidden;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-title{
+    color:#073f7a;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.page-subtitle{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.hero{
+    background:#0b3d73;
+    color:white;
+    padding:35px;
+    border-radius:0 0 18px 18px;
+    margin:-28px -35px 25px -35px;
+}
+
+.hero h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#d9e7f5;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:white;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:bold;
+    color:#06417d;
+    margin-bottom:5px;
+}
+
+.stat-label{
+    color:#718096;
+    font-size:13px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.course-card{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.course-code{
+    display:inline-block;
+    background:#e8f2e3;
+    color:#43821c;
+    font-size:11px;
+    padding:6px 10px;
+    border-radius:15px;
+    margin-bottom:14px;
+}
+
+.course-card h3{
+    color:#06417d;
+    margin-bottom:10px;
+}
+
+.course-card p{
+    color:#64748b;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.card-button{
+    margin-top:18px;
+    border:none;
+    background:#0b4c8c;
+    color:white;
+    padding:11px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.card-button:hover{
+    background:#083968;
+}
+
+/* =========================
+   COURSE HEADER
+========================= */
+
+.course-header{
+    background:#0b3d73;
+    color:white;
+    padding:28px;
+    border-radius:0 0 18px 18px;
+    margin:-28px -35px 25px -35px;
+}
+
+.back-button{
+    background:#285886;
+    border:none;
+    color:white;
+    padding:8px 14px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-bottom:22px;
+}
+
+.course-header h1{
+    font-size:29px;
+    margin-bottom:10px;
+}
+
+.course-header p{
+    color:#dce9f6;
+}
+
+/* =========================
+   COURSE CONTENT
+========================= */
+
+.course-layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:22px;
+}
+
+.module-panel{
+    background:white;
+    border-radius:13px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+    height:max-content;
+}
+
+.module{
+    margin-bottom:10px;
+}
+
+.module-title{
+    width:100%;
+    text-align:left;
+    border:none;
+    background:#eef3f8;
+    padding:13px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#0b477f;
+}
+
+.lesson-list{
+    padding:6px 0 4px 8px;
+}
+
+.lesson-button{
+    width:100%;
+    text-align:left;
+    border:none;
+    background:white;
+    padding:10px;
+    cursor:pointer;
+    color:#46566a;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.lesson-button:hover,
+.lesson-button.selected{
+    background:#e8f1fa;
+    color:#06417d;
+}
+
+.lesson-button.completed{
+    color:#39821c;
+}
+
+.lesson-viewer{
+    background:white;
+    border-radius:13px;
+    padding:30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+    min-height:500px;
+}
+
+.lesson-number{
+    display:inline-block;
+    background:#e8f4df;
+    color:#4b8d21;
+    font-size:11px;
+    padding:6px 10px;
+    border-radius:14px;
+    margin-bottom:15px;
+}
+
+.lesson-viewer h2{
+    color:#06417d;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.lesson-description{
+    color:#687789;
+    margin-bottom:25px;
+}
+
+.lesson-content{
+    line-height:1.75;
+    color:#182a40;
+}
+
+.lesson-content h3{
+    color:#073f7a;
+    margin:25px 0 10px;
+}
+
+.lesson-content p{
+    margin-bottom:15px;
+}
+
+.lesson-content ul{
+    margin:10px 0 18px 25px;
+}
+
+.complete-button{
+    margin-top:30px;
+    background:#0b4c8c;
+    color:white;
+    border:none;
+    padding:13px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.complete-button.completed{
+    background:#4d8b29;
+}
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.admin-card{
+    background:white;
+    border-radius:13px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.admin-card h2{
+    color:#06417d;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:#30445d;
+    margin-bottom:7px;
+}
+
+.form-input,
+.form-select,
+.form-textarea{
+    width:100%;
+    border:1px solid #d5dde7;
+    border-radius:6px;
+    padding:11px 12px;
+    font-family:inherit;
+    font-size:14px;
+    outline:none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus{
+    border-color:#3175b8;
+}
+
+.form-textarea{
+    min-height:180px;
+    resize:vertical;
+}
+
+.save-button{
+    width:100%;
+    background:#0b4c8c;
+    color:white;
+    border:none;
+    padding:13px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.save-button:hover{
+    background:#073966;
+}
+
+.admin-lesson{
+    border:1px solid #e0e6ed;
+    border-radius:8px;
+    padding:14px;
+    margin-bottom:10px;
+}
+
+.admin-lesson strong{
+    color:#06417d;
+}
+
+.admin-lesson small{
+    display:block;
+    color:#718096;
+    margin:5px 0 10px;
+}
+
+.admin-actions{
+    display:flex;
+    gap:8px;
+}
+
+.edit-button,
+.delete-button{
+    border:none;
+    padding:7px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.edit-button{
+    background:#e6f0fa;
+    color:#07508e;
+}
+
+.delete-button{
+    background:#fdeaea;
+    color:#b42323;
+}
+
+.warning{
+    background:#fff6df;
+    border:1px solid #f0d98b;
+    padding:13px;
+    border-radius:7px;
+    color:#725a16;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.reset-button{
+    margin-top:15px;
+    background:#b52d2d;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-card{
+    background:white;
+    padding:25px;
+    border-radius:13px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.progress-bar{
+    height:14px;
+    background:#e4e9ef;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:#3277b8;
+    transition:.3s;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    color:#718096;
+    padding:20px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:190px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .course-layout{
+        grid-template-columns:1fr;
+    }
+
+    .admin-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .header{
+        padding:0 12px;
+    }
+
+    .brand-title{
+        font-size:18px;
+    }
+
+    .brand-subtitle{
+        display:none;
+    }
+
+    .luts-logo{
+        width:55px;
+        height:55px;
+    }
+
+    .sidebar{
+        width:70px;
+        padding:20px 8px;
+    }
+
+    .sidebar-title,
+    .menu-button{
+        font-size:0;
+    }
+
+    .menu-icon{
+        font-size:18px;
+        width:auto;
+    }
+
+    .sidebar-bottom{
+        margin-top:100px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .hero,
+    .course-header{
+        margin:-20px -20px 20px -20px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <img
+            src="Luts-inv-Logo.png"
+            alt="LUTS Engineering Logo"
+            class="luts-logo"
+        >
+
+        <div>
+            <div class="brand-title">
+                LUTS STUDENT
+            </div>
+
+            <div class="brand-subtitle">
+                ENGINEERING BEYOND DRAWINGS
+            </div>
+        </div>
+
+    </div>
+
+    <div class="user-area">
+
+        <div class="notification">
+            🔔
+        </div>
+
+        <div class="avatar">
+            S
+        </div>
+
+        <div class="user-text">
+            <strong>Student</strong>
+            <span>Engineering Student</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="app">
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        STUDENT PORTAL
+    </div>
+
+    <button
+        class="menu-button active"
+        onclick="showPage('dashboard', this)"
+    >
+        <span class="menu-icon">⌂</span>
+        Dashboard
+    </button>
+
+    <button
+        class="menu-button"
+        onclick="showPage('courses', this)"
+    >
+        <span class="menu-icon">□</span>
+        My Courses
+    </button>
+
+    <button
+        class="menu-button"
+        onclick="showPage('assignments', this)"
+    >
+        <span class="menu-icon">✓</span>
+        Assignments
+    </button>
+
+    <button
+        class="menu-button"
+        onclick="showPage('resources', this)"
+    >
+        <span class="menu-icon">▤</span>
+        Resources
+    </button>
+
+    <button
+        class="menu-button"
+        onclick="showPage('progress', this)"
+    >
+        <span class="menu-icon">◔</span>
+        My Progress
+    </button>
+
+    <!-- NEW ADMIN BUTTON -->
+
+    <button
+        class="menu-button"
+        onclick="showPage('admin', this)"
+    >
+        <span class="menu-icon">✎</span>
+        Teacher / Admin
+    </button>
+
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="menu-button"
+            onclick="showPage('settings', this)"
+        >
+            <span class="menu-icon">⚙</span>
+            Settings
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="content">
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section id="dashboard" class="page active">
+
+    <div class="hero">
+
+        <h1>
+            AutoCAD — Engineering Design
+        </h1>
+
+        <p>
+            CAD fundamentals, engineering drawing,
+            practical exercises and design projects.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Active Course</div>
+        </div>
+
+        <div class="stat">
+            <div
+                class="stat-number"
+                id="dashboardCompleted"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Lessons Completed
+            </div>
+        </div>
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="dashboardProgress"
+            >
+                0%
+            </div>
+
+            <div class="stat-label">
+                Course Progress
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-number">
+                0
+            </div>
+
+            <div class="stat-label">
+                Projects Completed
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h2
+        style="margin-bottom:18px;color:#06417d;"
+    >
+        My Courses
+    </h2>
+
+
+    <div class="course-grid">
+
+        <div class="course-card">
+
+            <span class="course-code">
+                CAD-101
+            </span>
+
+            <h3>
+                AutoCAD — Engineering Design
+            </h3>
+
+            <p>
+                Learn CAD fundamentals,
+                engineering drawing,
+                modification tools,
+                annotation and practical
+                mechanical design.
+            </p>
+
+            <button
+                class="card-button"
+                onclick="openCourse()"
+            >
+                Continue Course →
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <span class="course-code">
+                CAD-201
+            </span>
+
+            <h3>
+                SolidWorks
+            </h3>
+
+            <p>
+                3D part modelling,
+                assemblies and engineering
+                design projects.
+            </p>
+
+            <button
+                class="card-button"
+                onclick="comingSoon()"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COURSES
+========================= -->
+
+<section id="courses" class="page">
+
+    <h1 class="page-title">
+        My Courses
+    </h1>
+
+    <p class="page-subtitle">
+        Courses available on LUTS STUDENT.
+    </p>
+
+    <div class="course-grid">
+
+        <div class="course-card">
+
+            <span class="course-code">
+                CAD-101
+            </span>
+
+            <h3>
+                AutoCAD — Engineering Design
+            </h3>
+
+            <p>
+                Engineering drawing and
+                practical CAD design.
+            </p>
+
+            <button
+                class="card-button"
+                onclick="openCourse()"
+            >
+                Open Course
+            </button>
+
+        </div>
+
+        <div class="course-card">
+
+            <span class="course-code">
+                CAD-201
+            </span>
+
+            <h3>
+                SolidWorks
+            </h3>
+
+            <p>
+                3D engineering design.
+            </p>
+
+            <button
+                class="card-button"
+                onclick="comingSoon()"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COURSE DETAIL
+========================= -->
+
+<section id="courseDetail" class="page">
+
+    <div class="course-header">
+
+        <button
+            class="back-button"
+            onclick="showPage('courses')"
+        >
+            ← Back to Courses
+        </button>
+
+        <h1>
+            AutoCAD — Engineering Design
+        </h1>
+
+        <p>
+            CAD fundamentals, engineering drawing,
+            practical exercises and design projects.
+        </p>
+
+    </div>
+
+
+    <div class="course-layout">
+
+        <!-- MODULES -->
+
+        <div
+            class="module-panel"
+            id="modulePanel"
+        >
+        </div>
+
+
+        <!-- LESSON -->
+
+        <div class="lesson-viewer">
+
+            <span
+                class="lesson-number"
+                id="lessonNumber"
+            >
+                LESSON 1
+            </span>
+
+            <h2 id="lessonTitle">
+                Introduction to CAD
+            </h2>
+
+            <p
+                class="lesson-description"
+                id="lessonDescription"
+            >
+            </p>
+
+            <hr
+                style="
+                border:none;
+                border-top:1px solid #e1e6ec;
+                margin:20px 0;
+                "
+            >
+
+            <div
+                class="lesson-content"
+                id="lessonContent"
+            >
+            </div>
+
+            <button
+                id="completeButton"
+                class="complete-button"
+                onclick="completeCurrentLesson()"
+            >
+                Mark Lesson Complete
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ASSIGNMENTS
+========================= -->
+
+<section id="assignments" class="page">
+
+    <h1 class="page-title">
+        Assignments
+    </h1>
+
+    <p class="page-subtitle">
+        Your engineering design assignments.
+    </p>
+
+    <div class="progress-card">
+
+        <h3>
+            AutoCAD Assignment
+        </h3>
+
+        <p
+            style="margin-top:10px;color:#64748b;"
+        >
+            Practical drawing assignment will
+            appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESOURCES
+========================= -->
+
+<section id="resources" class="page">
+
+    <h1 class="page-title">
+        Resources
+    </h1>
+
+    <p class="page-subtitle">
+        Learning resources and engineering
+        reference materials.
+    </p>
+
+    <div class="progress-card">
+
+        <h3>
+            Engineering Resources
+        </h3>
+
+        <p
+            style="margin-top:10px;color:#64748b;"
+        >
+            Your course resources will appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<section id="progress" class="page">
+
+    <h1 class="page-title">
+        My Progress
+    </h1>
+
+    <p class="page-subtitle">
+        Track your learning progress.
+    </p>
+
+    <div class="progress-card">
+
+        <h2>
+            AutoCAD — Engineering Design
+        </h2>
+
+        <div
+            style="
+            margin-top:20px;
+            display:flex;
+            justify-content:space-between;
+            "
+        >
+
+            <span>
+                Course Progress
+            </span>
+
+            <strong id="progressText">
+                0%
+            </strong>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill"
+            ></div>
+
+        </div>
+
+        <p
+            id="progressDetails"
+            style="color:#64748b;"
+        >
+            0 lessons completed.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<section id="admin" class="page">
+
+    <h1 class="page-title">
+        Teacher / Admin
+    </h1>
+
+    <p class="page-subtitle">
+        Create and manage teaching content.
+    </p>
+
+
+    <div class="warning">
+
+        <strong>Prototype storage:</strong>
+        Lessons added here are currently stored
+        in this browser. This means students on
+        other devices will not see them yet.
+        We will connect this to an online database
+        in the next stage.
+
+    </div>
+
+
+    <div class="admin-grid">
+
+        <!-- FORM -->
+
+        <div class="admin-card">
+
+            <h2>
+                Add / Edit Lesson
+            </h2>
+
+
+            <input
+                type="hidden"
+                id="editLessonIndex"
+                value=""
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    Module
+                </label>
+
+                <select
+                    id="lessonModule"
+                    class="form-select"
+                >
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Lesson Title
+                </label>
+
+                <input
+                    id="lessonTitleInput"
+                    class="form-input"
+                    type="text"
+                    placeholder="Example: Line and Polyline"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Lesson Description
+                </label>
+
+                <textarea
+                    id="lessonDescriptionInput"
+                    class="form-textarea"
+                    style="min-height:100px;"
+                    placeholder="Short description of the lesson"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Teaching Content
+                </label>
+
+                <textarea
+                    id="lessonContentInput"
+                    class="form-textarea"
+                    placeholder="Enter your teaching content here..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                class="save-button"
+                onclick="saveLesson()"
+            >
+                Save Lesson
+            </button>
+
+
+            <button
+                class="reset-button"
+                onclick="resetLessonForm()"
+            >
+                Clear Form
+            </button>
+
+        </div>
+
+
+        <!-- EXISTING LESSONS -->
+
+        <div class="admin-card">
+
+            <h2>
+                Existing Lessons
+            </h2>
+
+            <div
+                id="adminLessonList"
+            >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<section id="settings" class="page">
+
+    <h1 class="page-title">
+        Settings
+    </h1>
+
+    <p class="page-subtitle">
+        LUTS STUDENT settings.
+    </p>
+
+    <div class="progress-card">
+
+        <h3>
+            Student Profile
+        </h3>
+
+        <p
+            style="
+            margin-top:10px;
+            color:#64748b;
+            "
+        >
+            Student settings will be added later.
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   LUTS STUDENT
+   STABLE VERSION
+========================================================= */
+
+
+/* =========================================================
+   DEFAULT COURSE DATA
+========================================================= */
+
+const defaultLessons = [
+
+    {
+        module: "CAD Fundamentals",
+        title: "Introduction to CAD",
+        description:
+            "Understanding Computer-Aided Design and its role in engineering.",
+        content: `
+            <h3>What is CAD?</h3>
+
+            <p>
+                Computer-Aided Design, commonly known as CAD,
+                is the use of computer software to create,
+                modify, analyse and document engineering designs.
+            </p>
+
+            <p>
+                CAD is widely used in mechanical engineering,
+                manufacturing, civil engineering, architecture
+                and industrial design.
+            </p>
+
+            <h3>Why Engineers Use CAD</h3>
+
+            <ul>
+                <li>Creating accurate engineering drawings</li>
+                <li>Modelling components</li>
+                <li>Communicating design ideas</li>
+                <li>Preparing manufacturing drawings</li>
+                <li>Reducing design errors</li>
+            </ul>
+
+            <h3>Learning Objective</h3>
+
+            <p>
+                By the end of this lesson, the learner should
+                understand the purpose of CAD and its importance
+                in engineering design.
+            </p>
+        `
+    },
+
+    {
+        module: "CAD Fundamentals",
+        title: "AutoCAD Interface",
+        description:
+            "Understanding the main AutoCAD interface and workspace.",
+        content: `
+            <h3>AutoCAD Interface</h3>
+
+            <p>
+                The AutoCAD interface provides access to drawing
+                commands, editing tools, properties and drawing
+                settings.
+            </p>
+
+            <h3>Main Areas</h3>
+
+            <ul>
+                <li>Application menu</li>
+                <li>Ribbon</li>
+                <li>Drawing area</li>
+                <li>Command line</li>
+                <li>Status bar</li>
+                <li>Navigation tools</li>
+            </ul>
+        `
+    },
+
+    {
+        module: "CAD Fundamentals",
+        title: "Drawing Setup",
+        description:
+            "Preparing an AutoCAD drawing before starting the design.",
+        content: `
+            <h3>Drawing Setup</h3>
+
+            <p>
+                Proper drawing setup is important because it
+                establishes the units, limits, layers and other
+                standards used during the design.
+            </p>
+
+            <ul>
+                <li>Set drawing units</li>
+                <li>Create layers</li>
+                <li>Set object properties</li>
+                <li>Set drawing limits</li>
+            </ul>
+        `
+    },
+
+    {
+        module: "Drawing Tools",
+        title: "Line and Polyline",
+        description:
+            "Creating engineering geometry using lines and polylines.",
+        content: `
+            <h3>Line Command</h3>
+
+            <p>
+                The Line command creates straight line segments.
+            </p>
+
+            <h3>Polyline</h3>
+
+            <p>
+                A polyline is a connected sequence of line or arc
+                segments treated as one object.
+            </p>
+
+            <p>
+                Practical exercise: create a simple mechanical
+                profile using lines and polylines.
+            </p>
+        `
+    },
+
+    {
+        module: "Drawing Tools",
+        title: "Circle and Arc",
+        description:
+            "Creating circular and curved engineering geometry.",
+        content: `
+            <h3>Circle</h3>
+
+            <p>
+                Circles are commonly used for holes, shafts,
+                bearings and other mechanical features.
+            </p>
+
+            <h3>Arc</h3>
+
+            <p>
+                Arcs are used when only part of a circular path
+                is required.
+            </p>
+        `
+    },
+
+    {
+        module: "Drawing Tools",
+        title: "Rectangle and Polygon",
+        description:
+            "Creating rectangular and polygonal geometry.",
+        content: `
+            <h3>Rectangle</h3>
+
+            <p>
+                Rectangles are useful for creating plates,
+                brackets and other engineering profiles.
+            </p>
+
+            <h3>Polygon</h3>
+
+            <p>
+                Polygons allow regular multi-sided shapes to
+                be created quickly.
+            </p>
+        `
+    },
+
+    {
+        module: "Modification",
+        title: "Move and Copy",
+        description:
+            "Moving and duplicating engineering geometry.",
+        content: `
+            <h3>Move</h3>
+
+            <p>
+                The Move command changes the location of selected
+                objects.
+            </p>
+
+            <h3>Copy</h3>
+
+            <p>
+                Copy creates one or more duplicates of an object.
+            </p>
+        `
+    },
+
+    {
+        module: "Modification",
+        title: "Trim and Extend",
+        description:
+            "Cleaning and extending geometry during design.",
+        content: `
+            <h3>Trim</h3>
+
+            <p>
+                Trim removes unwanted portions of geometry.
+            </p>
+
+            <h3>Extend</h3>
+
+            <p>
+                Extend lengthens an object until it reaches
+                another boundary.
+            </p>
+        `
+    },
+
+    {
+        module: "Modification",
+        title: "Offset and Mirror",
+        description:
+            "Creating parallel and symmetrical geometry.",
+        content: `
+            <h3>Offset</h3>
+
+            <p>
+                Offset creates a parallel copy of an object
+                at a specified distance.
+            </p>
+
+            <h3>Mirror</h3>
+
+            <p>
+                Mirror creates symmetrical geometry around
+                a selected axis.
+            </p>
+        `
+    },
+
+    {
+        module: "Annotation",
+        title: "Dimensions",
+        description:
+            "Adding engineering dimensions to drawings.",
+        content: `
+            <h3>Engineering Dimensions</h3>
+
+            <p>
+                Dimensions communicate the required size and
+                location of features in an engineering drawing.
+            </p>
+
+            <ul>
+                <li>Linear dimensions</li>
+                <li>Aligned dimensions</li>
+                <li>Angular dimensions</li>
+                <li>Diameter dimensions</li>
+                <li>Radius dimensions</li>
+            </ul>
+        `
+    },
+
+    {
+        module: "Annotation",
+        title: "Text and Leaders",
+        description:
+            "Adding notes and leader annotations.",
+        content: `
+            <h3>Text</h3>
+
+            <p>
+                Text is used to communicate additional information
+                on an engineering drawing.
+            </p>
+
+            <h3>Leaders</h3>
+
+            <p>
+                Leaders connect notes to specific features.
+            </p>
+        `
+    },
+
+    {
+        module: "Annotation",
+        title: "Engineering Drawing",
+        description:
+            "Preparing a complete engineering drawing.",
+        content: `
+            <h3>Engineering Drawing</h3>
+
+            <p>
+                A complete engineering drawing combines geometry,
+                dimensions, notes, title blocks and drawing standards.
+            </p>
+        `
+    },
+
+    {
+        module: "Mechanical Design",
+        title: "Mechanical Parts",
+        description:
+            "Introduction to mechanical component design.",
+        content: `
+            <h3>Mechanical Parts</h3>
+
+            <p>
+                Mechanical components must be designed with
+                function, dimensions, materials and manufacturing
+                requirements in mind.
+            </p>
+        `
+    },
+
+    {
+        module: "Mechanical Design",
+        title: "Gear Design",
+        description:
+            "Creating a basic gear design using CAD tools.",
+        content: `
+            <h3>Gear Design</h3>
+
+            <p>
+                Gears transmit rotary motion between shafts.
+                CAD allows engineers to create accurate gear
+                geometry and prepare manufacturing drawings.
+            </p>
+
+            <h3>Practical Exercise</h3>
+
+            <p>
+                Create a simple gear profile and apply the
+                required dimensions.
+            </p>
+        `
+    },
+
+    {
+        module: "Mechanical Design",
+        title: "Bracket Design",
+        description:
+            "Designing a practical mechanical bracket.",
+        content: `
+            <h3>Bracket Design</h3>
+
+            <p>
+                Brackets are commonly used to support or connect
+                mechanical components.
+            </p>
+
+            <p>
+                Design a bracket with mounting holes and apply
+                appropriate dimensions.
+            </p>
+        `
+    },
+
+    {
+        module: "Final Project",
+        title: "Project Brief",
+        description:
+            "Understanding the requirements of the final CAD project.",
+        content: `
+            <h3>Final Project</h3>
+
+            <p>
+                The final project requires the learner to apply
+                the CAD tools covered throughout the course.
+            </p>
+
+            <h3>Project Requirements</h3>
+
+            <ul>
+                <li>Create the engineering geometry</li>
+                <li>Apply dimensions</li>
+                <li>Use appropriate layers</li>
+                <li>Prepare the final drawing</li>
+            </ul>
+        `
+    },
+
+    {
+        module: "Final Project",
+        title: "Design Development",
+        description:
+            "Developing the final engineering design.",
+        content: `
+            <h3>Design Development</h3>
+
+            <p>
+                Develop the design from the project brief and
+                continuously check dimensions, geometry and
+                engineering requirements.
+            </p>
+        `
+    },
+
+    {
+        module: "Final Project",
+        title: "Final Submission",
+        description:
+            "Preparing and submitting the completed CAD project.",
+        content: `
+            <h3>Final Submission</h3>
+
+            <p>
+                Check the final drawing before submission.
+                Ensure dimensions, notes, layers and title block
+                information are complete.
+            </p>
+
+            <h3>Final Checklist</h3>
+
+            <ul>
+                <li>Drawing is complete</li>
+                <li>Dimensions are readable</li>
+                <li>Layers are correctly assigned</li>
+                <li>Drawing is saved correctly</li>
+                <li>Final project is ready for submission</li>
+            </ul>
+        `
+    }
+
+];
+
+
+/* =========================================================
+   LOAD LESSONS
+========================================================= */
+
+let lessons;
+
+try {
+
+    const savedLessons =
+        localStorage.getItem("lutsLessons");
+
+    if(savedLessons){
+
+        lessons = JSON.parse(savedLessons);
+
+    }else{
+
+        lessons = defaultLessons.map(
+            lesson => ({...lesson})
+        );
+
+        saveLessons();
+
+    }
+
+}catch(error){
+
+    console.error(
+        "Could not load saved lessons:",
+        error
+    );
+
+    lessons = defaultLessons.map(
+        lesson => ({...lesson})
+    );
+
+}
+
+
+/* =========================================================
+   COMPLETED LESSONS
+========================================================= */
+
+let completedLessons = [];
+
+try{
+
+    completedLessons =
+        JSON.parse(
+            localStorage.getItem(
+                "lutsCompletedLessons"
+            )
+        ) || [];
+
+}catch(error){
+
+    completedLessons = [];
+
+}
+
+
+let currentLesson = 0;
+
+
+/* =========================================================
+   SAVE LESSONS
+========================================================= */
+
+function saveLessons(){
+
+    localStorage.setItem(
+        "lutsLessons",
+        JSON.stringify(lessons)
+    );
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(pageId, button){
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(
+        page => page.classList.remove("active")
+    );
+
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if(selectedPage){
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    const buttons =
+        document.querySelectorAll(".menu-button");
+
+    buttons.forEach(
+        btn => btn.classList.remove("active")
+    );
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+
+    if(pageId === "courseDetail"){
+
+        renderCourse();
+
+    }
+
+
+    if(pageId === "admin"){
+
+        renderAdminLessons();
+
+        populateModuleSelect();
+
+    }
+
+
+    updateProgress();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   OPEN COURSE
+========================================================= */
+
+function openCourse(){
+
+    showPage("courseDetail");
+
+    renderCourse();
+
+}
+
+
+/* =========================================================
+   GET MODULES
+========================================================= */
+
+function getModules(){
+
+    const modules = [];
+
+    lessons.forEach(lesson => {
+
+        if(!modules.includes(lesson.module)){
+
+            modules.push(lesson.module);
+
+        }
+
+    });
+
+    return modules;
+
+}
+
+
+/* =========================================================
+   RENDER COURSE
+========================================================= */
+
+function renderCourse(){
+
+    const panel =
+        document.getElementById(
+            "modulePanel"
+        );
+
+    if(!panel) return;
+
+    panel.innerHTML = "";
+
+
+    const modules = getModules();
+
+
+    modules.forEach(
+        (moduleName, moduleIndex) => {
+
+        const moduleDiv =
+            document.createElement("div");
+
+        moduleDiv.className = "module";
+
+
+        const titleButton =
+            document.createElement("button");
+
+        titleButton.className =
+            "module-title";
+
+        titleButton.textContent =
+            `${moduleIndex + 1}. ${moduleName}`;
+
+
+        const lessonList =
+            document.createElement("div");
+
+        lessonList.className =
+            "lesson-list";
+
+
+        const moduleLessons =
+            lessons.filter(
+                lesson =>
+                    lesson.module === moduleName
+            );
+
+
+        moduleLessons.forEach(
+            lesson => {
+
+            const realIndex =
+                lessons.indexOf(lesson);
+
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "lesson-button";
+
+
+            if(
+                completedLessons.includes(
+                    realIndex
+                )
+            ){
+
+                button.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            if(realIndex === currentLesson){
+
+                button.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            button.textContent =
+                `${completedLessons.includes(realIndex) ? "✓ " : ""}${lesson.title}`;
+
+
+            button.onclick =
+                () => openLesson(realIndex);
+
+
+            lessonList.appendChild(button);
+
+        });
+
+
+        titleButton.onclick = () => {
+
+            lessonList.style.display =
+                lessonList.style.display === "none"
+                    ? "block"
+                    : "none";
+
+        };
+
+
+        moduleDiv.appendChild(
+            titleButton
+        );
+
+        moduleDiv.appendChild(
+            lessonList
+        );
+
+        panel.appendChild(
+            moduleDiv
+        );
+
+    });
+
+
+    openLesson(currentLesson);
+
+}
+
+
+/* =========================================================
+   OPEN LESSON
+========================================================= */
+
+function openLesson(index){
+
+    if(!lessons[index]){
+
+        if(lessons.length > 0){
+
+            index = 0;
+
+        }else{
+
+            return;
+
+        }
+
+    }
+
+
+    currentLesson = index;
+
+
+    const lesson =
+        lessons[index];
+
+
+    document.getElementById(
+        "lessonNumber"
+    ).textContent =
+        `LESSON ${index + 1}`;
+
+
+    document.getElementById(
+        "lessonTitle"
+    ).textContent =
+        lesson.title;
+
+
+    document.getElementById(
+        "lessonDescription"
+    ).textContent =
+        lesson.description;
+
+
+    document.getElementById(
+        "lessonContent"
+    ).innerHTML =
+        lesson.content;
+
+
+    updateLessonStatus();
+
+
+    document
+        .querySelectorAll(".lesson-button")
+        .forEach(button => {
+
+            button.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    const allButtons =
+        document.querySelectorAll(
+            ".lesson-button"
+        );
+
+
+    if(allButtons[index]){
+
+        allButtons[index].classList.add(
+            "selected"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   COMPLETE LESSON
+========================================================= */
+
+function completeCurrentLesson(){
+
+    if(
+        !completedLessons.includes(
+            currentLesson
+        )
+    ){
+
+        completedLessons.push(
+            currentLesson
+        );
+
+    }else{
+
+        completedLessons =
+            completedLessons.filter(
+                index =>
+                    index !== currentLesson
+            );
+
+    }
+
+
+    localStorage.setItem(
+        "lutsCompletedLessons",
+        JSON.stringify(
+            completedLessons
+        )
+    );
+
+
+    updateLessonStatus();
+
+    renderCourse();
+
+    updateProgress();
+
+}
+
+
+/* =========================================================
+   UPDATE LESSON STATUS
+========================================================= */
+
+function updateLessonStatus(){
+
+    const button =
+        document.getElementById(
+            "completeButton"
+        );
+
+
+    if(
+        completedLessons.includes(
+            currentLesson
+        )
+    ){
+
+        button.textContent =
+            "✓ Lesson Completed";
+
+        button.classList.add(
+            "completed"
+        );
+
+    }else{
+
+        button.textContent =
+            "Mark Lesson Complete";
+
+        button.classList.remove(
+            "completed"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE PROGRESS
+========================================================= */
+
+function updateProgress(){
+
+    const total =
+        lessons.length;
+
+    const completed =
+        completedLessons.filter(
+            index =>
+                index < total
+        ).length;
+
+
+    const percentage =
+        total === 0
+            ? 0
+            : Math.round(
+                completed / total * 100
+            );
+
+
+    const dashboardCompleted =
+        document.getElementById(
+            "dashboardCompleted"
+        );
+
+    if(dashboardCompleted){
+
+        dashboardCompleted.textContent =
+            completed;
+
+    }
+
+
+    const dashboardProgress =
+        document.getElementById(
+            "dashboardProgress"
+        );
+
+    if(dashboardProgress){
+
+        dashboardProgress.textContent =
+            percentage + "%";
+
+    }
+
+
+    const progressText =
+        document.getElementById(
+            "progressText"
+        );
+
+    if(progressText){
+
+        progressText.textContent =
+            percentage + "%";
+
+    }
+
+
+    const progressFill =
+        document.getElementById(
+            "progressFill"
+        );
+
+    if(progressFill){
+
+        progressFill.style.width =
+            percentage + "%";
+
+    }
+
+
+    const progressDetails =
+        document.getElementById(
+            "progressDetails"
+        );
+
+    if(progressDetails){
+
+        progressDetails.textContent =
+            `${completed} of ${total} lessons completed.`;
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMIN MODULE SELECT
+========================================================= */
+
+function populateModuleSelect(){
+
+    const select =
+        document.getElementById(
+            "lessonModule"
+        );
+
+    if(!select) return;
+
+
+    select.innerHTML = "";
+
+
+    const modules =
+        getModules();
+
+
+    modules.forEach(
+        moduleName => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            moduleName;
+
+        option.textContent =
+            moduleName;
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+
+    const addOption =
+        document.createElement(
+            "option"
+        );
+
+    addOption.value =
+        "__NEW_MODULE__";
+
+    addOption.textContent =
+        "+ Create New Module";
+
+
+    select.appendChild(
+        addOption
+    );
+
+
+    select.onchange = function(){
+
+        if(
+            this.value ===
+            "__NEW_MODULE__"
+        ){
+
+            const newModule =
+                prompt(
+                    "Enter the new module name:"
+                );
+
+
+            if(newModule &&
+                newModule.trim()
+            ){
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    newModule.trim();
+
+                option.textContent =
+                    newModule.trim();
+
+
+                this.insertBefore(
+                    option,
+                    this.lastElementChild
+                );
+
+
+                this.value =
+                    newModule.trim();
+
+            }else{
+
+                this.selectedIndex = 0;
+
+            }
+
+        }
+
+    };
+
+}
+
+
+/* =========================================================
+   SAVE ADMIN LESSON
+========================================================= */
+
+function saveLesson(){
+
+    const module =
+        document.getElementById(
+            "lessonModule"
+        ).value;
+
+
+    const title =
+        document.getElementById(
+            "lessonTitleInput"
+        ).value.trim();
+
+
+    const description =
+        document.getElementById(
+            "lessonDescriptionInput"
+        ).value.trim();
+
+
+    const content =
+        document.getElementById(
+            "lessonContentInput"
+        ).value.trim();
+
+
+    const editIndex =
+        document.getElementById(
+            "editLessonIndex"
+        ).value;
+
+
+    if(!module ||
+       module === "__NEW_MODULE__"
+    ){
+
+        alert(
+            "Please select a module."
+        );
+
+        return;
+
+    }
+
+
+    if(!title){
+
+        alert(
+            "Please enter a lesson title."
+        );
+
+        return;
+
+    }
+
+
+    if(!description){
+
+        alert(
+            "Please enter a lesson description."
+        );
+
+        return;
+
+    }
+
+
+    if(!content){
+
+        alert(
+            "Please enter teaching content."
+        );
+
+        return;
+
+    }
+
+
+    const lesson = {
+
+        module:module,
+
+        title:title,
+
+        description:description,
+
+        content:convertPlainTextToHTML(content)
+
+    };
+
+
+    if(editIndex !== ""){
+
+        lessons[
+            Number(editIndex)
+        ] = lesson;
+
+        alert(
+            "Lesson updated successfully."
+        );
+
+    }else{
+
+        lessons.push(
+            lesson
+        );
+
+        alert(
+            "New lesson added successfully."
+        );
+
+    }
+
+
+    saveLessons();
+
+
+    resetLessonForm();
+
+    populateModuleSelect();
+
+    renderAdminLessons();
+
+    renderCourse();
+
+    updateProgress();
+
+}
+
+
+/* =========================================================
+   CONVERT TEXT TO HTML
+========================================================= */
+
+function convertPlainTextToHTML(text){
+
+    return text
+        .split(/\n\s*\n/)
+        .map(
+            paragraph =>
+                `<p>${escapeHTML(paragraph).replace(/\n/g,"<br>")}</p>`
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================================
+   RENDER ADMIN LESSONS
+========================================================= */
+
+function renderAdminLessons(){
+
+    const container =
+        document.getElementById(
+            "adminLessonList"
+        );
+
+
+    if(!container) return;
+
+
+    container.innerHTML = "";
+
+
+    if(lessons.length === 0){
+
+        container.innerHTML =
+            `<div class="empty">
+                No lessons have been added.
+            </div>`;
+
+        return;
+
+    }
+
+
+    lessons.forEach(
+        (lesson,index) => {
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+        item.className =
+            "admin-lesson";
+
+
+        item.innerHTML = `
+
+            <strong>
+                ${index + 1}. ${escapeHTML(lesson.title)}
+            </strong>
+
+            <small>
+                ${escapeHTML(lesson.module)}
+            </small>
+
+            <small>
+                ${escapeHTML(lesson.description)}
+            </small>
+
+            <div class="admin-actions">
+
+                <button
+                    class="edit-button"
+                    onclick="editLesson(${index})"
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="delete-button"
+                    onclick="deleteLesson(${index})"
+                >
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+
+        container.appendChild(
+            item
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   EDIT LESSON
+========================================================= */
+
+function editLesson(index){
+
+    const lesson =
+        lessons[index];
+
+
+    if(!lesson) return;
+
+
+    const moduleSelect =
+        document.getElementById(
+            "lessonModule"
+        );
+
+
+    if(
+        !Array.from(
+            moduleSelect.options
+        ).some(
+            option =>
+                option.value ===
+                lesson.module
+        )
+    ){
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            lesson.module;
+
+        option.textContent =
+            lesson.module;
+
+        moduleSelect.insertBefore(
+            option,
+            moduleSelect.lastElementChild
+        );
+
+    }
+
+
+    moduleSelect.value =
+        lesson.module;
+
+
+    document.getElementById(
+        "lessonTitleInput"
+    ).value =
+        lesson.title;
+
+
+    document.getElementById(
+        "lessonDescriptionInput"
+    ).value =
+        lesson.description;
+
+
+    document.getElementById(
+        "lessonContentInput"
+    ).value =
+        htmlToPlainText(
+            lesson.content
+        );
+
+
+    document.getElementById(
+        "editLessonIndex"
+    ).value =
+        index;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   HTML TO PLAIN TEXT
+========================================================= */
+
+function htmlToPlainText(html){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.innerHTML =
+        html;
+
+    return div.innerText;
+
+}
+
+
+/* =========================================================
+   DELETE LESSON
+========================================================= */
+
+function deleteLesson(index){
+
+    const lesson =
+        lessons[index];
+
+
+    if(!lesson) return;
+
+
+    const confirmed =
+        confirm(
+            `Delete "${lesson.title}"?`
+        );
+
+
+    if(!confirmed) return;
+
+
+    lessons.splice(
+        index,
+        1
+    );
+
+
+    completedLessons =
+        completedLessons
+            .filter(
+                oldIndex =>
+                    oldIndex !== index
+            )
+            .map(
+                oldIndex =>
+                    oldIndex > index
+                        ? oldIndex - 1
+                        : oldIndex
+            );
+
+
+    saveLessons();
+
+
+    localStorage.setItem(
+        "lutsCompletedLessons",
+        JSON.stringify(
+            completedLessons
+        )
+    );
+
+
+    if(currentLesson >= lessons.length){
+
+        currentLesson =
+            Math.max(
+                0,
+                lessons.length - 1
+            );
+
+    }
+
+
+    renderAdminLessons();
+
+    populateModuleSelect();
+
+    renderCourse();
+
+    updateProgress();
+
+}
+
+
+/* =========================================================
+   RESET FORM
+========================================================= */
+
+function resetLessonForm(){
+
+    document.getElementById(
+        "editLessonIndex"
+    ).value = "";
+
+
+    document.getElementById(
+        "lessonTitleInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "lessonDescriptionInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "lessonContentInput"
+    ).value = "";
+
+
+    const select =
+        document.getElementById(
+            "lessonModule"
+        );
+
+
+    if(select.options.length > 0){
+
+        select.selectedIndex = 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET EVERYTHING
+========================================================= */
+
+function resetCourseData(){
+
+    const confirmed =
+        confirm(
+            "Reset all course content to the original LUTS lessons?"
+        );
+
+
+    if(!confirmed) return;
+
+
+    lessons =
+        defaultLessons.map(
+            lesson => ({...lesson})
+        );
+
+
+    completedLessons = [];
+
+
+    saveLessons();
+
+
+    localStorage.setItem(
+        "lutsCompletedLessons",
+        JSON.stringify([])
+    );
+
+
+    renderAdminLessons();
+
+    populateModuleSelect();
+
+    renderCourse();
+
+    updateProgress();
+
+
+    alert(
+        "Course data has been reset."
+    );
+
+}
+
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+
+function comingSoon(){
+
+    alert(
+        "This course is coming soon."
+    );
+
+}
+
+
+/* =========================================================
+   INITIALISE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderCourse();
+
+        populateModuleSelect();
+
+        renderAdminLessons();
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
