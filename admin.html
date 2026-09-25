@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>LUTS Teacher Dashboard</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f3f4f6;
+
+            color: #111827;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background: #111827;
+
+            color: white;
+
+            padding: 22px 30px;
+
+        }
+
+
+        header h1 {
+
+            margin: 0;
+
+            font-size: 26px;
+
+        }
+
+
+        header p {
+
+            margin: 6px 0 0;
+
+            color: #d1d5db;
+
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1000px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 22px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(0,0,0,0.08);
+
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        label {
+
+            display: block;
+
+            margin-top: 18px;
+
+            margin-bottom: 7px;
+
+            font-weight: 600;
+
+        }
+
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        input:focus,
+        textarea:focus {
+
+            border-color: #2563eb;
+
+        }
+
+
+        textarea {
+
+            min-height: 180px;
+
+            resize: vertical;
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+
+            margin-top: 25px;
+
+            padding:
+                14px 24px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        button:disabled {
+
+            background: #9ca3af;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        #status {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            background: #eff6ff;
+
+            color: #1e40af;
+
+        }
+
+
+        /* =========================
+           CHECKBOX
+        ========================= */
+
+        .publish-row {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .publish-row input {
+
+            width: auto;
+
+        }
+
+
+        /* =========================
+           FILE INFO
+        ========================= */
+
+        .info {
+
+            margin-top: 8px;
+
+            font-size: 13px;
+
+            color: #6b7280;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                padding: 0 12px;
+
+            }
+
+            .card {
+
+                padding: 18px;
+
+            }
+
+            header {
+
+                padding: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>LUTS TEACHER DASHBOARD</h1>
+
+    <p>
+        Engineering Beyond Drawings
+    </p>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- =========================
+         ADMIN KEY
+    ========================= -->
+
+    <div class="card">
+
+        <h2>Teacher Access</h2>
+
+        <label for="adminKey">
+            Admin Key
+        </label>
+
+        <input
+            type="password"
+            id="adminKey"
+            placeholder="Enter your admin key">
+
+        <div class="info">
+            This is required before publishing lessons.
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         LESSON INFORMATION
+    ========================= -->
+
+    <div class="card">
+
+        <h2>Add New Lesson</h2>
+
+
+        <label for="courseId">
+            Course ID
+        </label>
+
+        <input
+            id="courseId"
+            value="CAD-101">
+
+
+        <label for="courseTitle">
+            Course Title
+        </label>
+
+        <input
+            id="courseTitle"
+            value="AutoCAD — Engineering Design">
+
+
+        <label for="moduleId">
+            Module ID
+        </label>
+
+        <input
+            id="moduleId"
+            placeholder="Example: M1">
+
+
+        <label for="moduleTitle">
+            Module Title
+        </label>
+
+        <input
+            id="moduleTitle"
+            placeholder="Example: CAD Fundamentals">
+
+
+        <label for="lessonTitle">
+            Lesson Title
+        </label>
+
+        <input
+            id="lessonTitle"
+            placeholder="Example: Introduction to CAD">
+
+
+        <label for="description">
+            Lesson Description
+        </label>
+
+        <input
+            id="description"
+            placeholder="Short description of the lesson">
+
+
+        <label for="content">
+            Lesson Content
+        </label>
+
+        <textarea
+            id="content"
+            placeholder="Write the lesson content here..."></textarea>
+
+
+        <!-- =========================
+             VIDEO
+        ========================= -->
+
+        <label for="video">
+
+            🎥 YouTube Embed URL
+
+        </label>
+
+        <input
+            id="video"
+            placeholder="https://www.youtube.com/embed/VIDEO_ID">
+
+        <div class="info">
+
+            Example:
+            https://www.youtube.com/embed/abc123
+
+        </div>
+
+
+        <!-- =========================
+             IMAGES
+        ========================= -->
+
+        <label for="images">
+
+            🖼️ Image URLs
+
+        </label>
+
+        <textarea
+            id="images"
+            placeholder="Paste one image URL per line"></textarea>
+
+        <div class="info">
+
+            You can add several images.
+            Put each URL on a new line.
+
+        </div>
+
+
+        <!-- =========================
+             DOCUMENT
+        ========================= -->
+
+        <label for="documentName">
+
+            📄 Document Name
+
+        </label>
+
+        <input
+            id="documentName"
+            placeholder="Example: AutoCAD Student Notes.pdf">
+
+
+        <label for="documentUrl">
+
+            📎 Document URL
+
+        </label>
+
+        <input
+            id="documentUrl"
+            placeholder="Paste Google Drive sharing link">
+
+
+        <!-- =========================
+             PUBLISH
+        ========================= -->
+
+        <div class="publish-row">
+
+            <input
+                type="checkbox"
+                id="published"
+                checked>
+
+            <label
+                for="published"
+                style="margin:0;">
+
+                Publish this lesson
+
+            </label>
+
+        </div>
+
+
+        <!-- =========================
+             SAVE BUTTON
+        ========================= -->
+
+        <button
+            id="saveButton"
+            onclick="saveLesson()">
+
+            💾 SAVE LESSON
+
+        </button>
+
+
+        <div id="status"></div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/******************************************************
+ * LUTS GOOGLE APPS SCRIPT API
+ ******************************************************/
+
+const API_URL =
+    "https://script.google.com/macros/s/AKfycby0g9ZJgconqSZbvCVa_R9dUFkyEObwHxdf-JUpzMdjM_eOV2F7UokF1mMWx2i61Ag/exec";
+
+
+
+/******************************************************
+ * SAVE LESSON
+ ******************************************************/
+
+async function saveLesson() {
+
+
+    const button =
+        document.getElementById("saveButton");
+
+
+    const status =
+        document.getElementById("status");
+
+
+    const adminKey =
+        document.getElementById("adminKey").value.trim();
+
+
+    const courseId =
+        document.getElementById("courseId").value.trim();
+
+
+    const courseTitle =
+        document.getElementById("courseTitle").value.trim();
+
+
+    const moduleId =
+        document.getElementById("moduleId").value.trim();
+
+
+    const moduleTitle =
+        document.getElementById("moduleTitle").value.trim();
+
+
+    const lessonTitle =
+        document.getElementById("lessonTitle").value.trim();
+
+
+    const description =
+        document.getElementById("description").value.trim();
+
+
+    const content =
+        document.getElementById("content").value;
+
+
+    const video =
+        document.getElementById("video").value.trim();
+
+
+    const imagesText =
+        document.getElementById("images").value;
+
+
+    const documentName =
+        document.getElementById("documentName").value.trim();
+
+
+    const documentUrl =
+        document.getElementById("documentUrl").value.trim();
+
+
+    const published =
+        document.getElementById("published").checked;
+
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
+
+    if (!adminKey) {
+
+        showStatus(
+            "❌ Please enter your Admin Key.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (!courseId) {
+
+        showStatus(
+            "❌ Please enter a Course ID.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (!courseTitle) {
+
+        showStatus(
+            "❌ Please enter the Course Title.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (!moduleId) {
+
+        showStatus(
+            "❌ Please enter the Module ID.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (!moduleTitle) {
+
+        showStatus(
+            "❌ Please enter the Module Title.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (!lessonTitle) {
+
+        showStatus(
+            "❌ Please enter the Lesson Title.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       PROCESS IMAGES
+    ========================= */
+
+    const images =
+        imagesText
+            .split("\n")
+            .map(
+                function(url) {
+
+                    return url.trim();
+
+                }
+            )
+            .filter(
+                function(url) {
+
+                    return url !== "";
+
+                }
+            );
+
+
+
+    /* =========================
+       PROCESS DOCUMENT
+    ========================= */
+
+    const documents = [];
+
+
+    if (
+        documentName &&
+        documentUrl
+    ) {
+
+        documents.push({
+
+            name:
+                documentName,
+
+            url:
+                documentUrl
+
+        });
+
+    }
+
+
+
+    /* =========================
+       PREPARE FORM
+    ========================= */
+
+    const formData =
+        new URLSearchParams();
+
+
+    formData.append(
+        "action",
+        "saveLesson"
+    );
+
+
+    formData.append(
+        "adminKey",
+        adminKey
+    );
+
+
+    formData.append(
+        "courseId",
+        courseId
+    );
+
+
+    formData.append(
+        "courseTitle",
+        courseTitle
+    );
+
+
+    formData.append(
+        "moduleId",
+        moduleId
+    );
+
+
+    formData.append(
+        "moduleTitle",
+        moduleTitle
+    );
+
+
+    formData.append(
+        "lessonTitle",
+        lessonTitle
+    );
+
+
+    formData.append(
+        "description",
+        description
+    );
+
+
+    formData.append(
+        "content",
+        content
+    );
+
+
+    formData.append(
+        "video",
+        video
+    );
+
+
+    formData.append(
+        "images",
+        JSON.stringify(images)
+    );
+
+
+    formData.append(
+        "documents",
+        JSON.stringify(documents)
+    );
+
+
+    formData.append(
+        "published",
+        published
+            ? "TRUE"
+            : "FALSE"
+    );
+
+
+
+    /* =========================
+       SEND TO GOOGLE
+    ========================= */
+
+    button.disabled = true;
+
+    button.textContent =
+        "Saving...";
+
+
+    showStatus(
+        "⏳ Sending lesson to LUTS database...",
+        false
+    );
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    body: formData
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "LUTS API response:",
+            result
+        );
+
+
+        if (result.success) {
+
+
+            showStatus(
+                "✅ Lesson saved successfully! Lesson ID: " +
+                result.lessonId,
+                false
+            );
+
+
+            clearLessonForm();
+
+
+        } else {
+
+
+            showStatus(
+                "❌ " +
+                result.message,
+                true
+            );
+
+        }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "LUTS error:",
+            error
+        );
+
+
+        showStatus(
+            "❌ Could not connect to the LUTS database.",
+            true
+        );
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "💾 SAVE LESSON";
+
+}
+
+
+
+/******************************************************
+ * STATUS MESSAGE
+ ******************************************************/
+
+function showStatus(message, error) {
+
+
+    const status =
+        document.getElementById("status");
+
+
+    status.style.display =
+        "block";
+
+
+    status.textContent =
+        message;
+
+
+    if (error) {
+
+        status.style.background =
+            "#fef2f2";
+
+        status.style.color =
+            "#991b1b";
+
+    } else {
+
+        status.style.background =
+            "#eff6ff";
+
+        status.style.color =
+            "#1e40af";
+
+    }
+
+}
+
+
+
+/******************************************************
+ * CLEAR FORM
+ ******************************************************/
+
+function clearLessonForm() {
+
+
+    document.getElementById(
+        "lessonTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "description"
+    ).value = "";
+
+
+    document.getElementById(
+        "content"
+    ).value = "";
+
+
+    document.getElementById(
+        "video"
+    ).value = "";
+
+
+    document.getElementById(
+        "images"
+    ).value = "";
+
+
+    document.getElementById(
+        "documentName"
+    ).value = "";
+
+
+    document.getElementById(
+        "documentUrl"
+    ).value = "";
+
+
+    document.getElementById(
+        "moduleId"
+    ).value = "";
+
+
+    document.getElementById(
+        "moduleTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "published"
+    ).checked = true;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
